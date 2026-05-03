@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -36,13 +37,23 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
-            { name: "Buket Wisuda", price: "Rp45.000" },
-            { name: "Buket Snack", price: "Rp55.000" },
-            { name: "Buket Bunga Artificial", price: "Rp65.000" },
+            { name: "Buket Wisuda", price: "Rp45.000", image: "/images/wisuda.jpg" },
+            { name: "Buket Snack", price: "Rp55.000", image: null },
+            { name: "Buket Bunga Artificial", price: "Rp65.000", image: null },
           ].map((item, i) => (
             <div key={i} className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-xl transition">
-              <div className="h-40 bg-pink-100 rounded-xl mb-4 flex items-center justify-center text-pink-400">
-                Foto Produk
+              <div className="h-40 bg-pink-100 rounded-xl mb-4 flex items-center justify-center text-pink-400 overflow-hidden">
+                {item.image ? (
+                  <Image 
+                    src={item.image} 
+                    alt={item.name}
+                    width={300}
+                    height={300}
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <span>Foto Produk</span>
+                )}
               </div>
               <h4 className="text-xl font-semibold mb-2">{item.name}</h4>
               <p className="text-pink-500 font-medium mb-4">{item.price}</p>
@@ -67,7 +78,7 @@ export default function Home() {
         <h3 className="text-3xl font-semibold text-pink-500 mb-6">Pesan Sekarang</h3>
         <p className="mb-6 text-gray-600">Hubungi kami melalui WhatsApp untuk pemesanan cepat.</p>
         <a
-  href="https://wa.me/6285700414370?text=Halo%20kak,%20saya%20ingin%20memesan%20buket%20di%20auliee.flo"
+  href="https://wa.me/6283871533319?text=Halo%20kak,%20saya%20ingin%20memesan%20buket%20di%20auliee.flo"
   target="_blank"
   className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600"
 >
